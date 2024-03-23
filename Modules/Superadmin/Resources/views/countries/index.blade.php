@@ -17,7 +17,10 @@
         <div class="col-md-12">
            @component('superadmin::layouts.includes.card' )
                @slot('tool')
-                   <a data-href="{{ route('admin.country.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.country') }}</a>
+               @if (auth()->user()->isAbleTo('admin_create-countries'))
+
+               <a data-href="{{ route('admin.country.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.country') }}</a>
+               @endif
                @endslot
 
                @slot('content')
@@ -27,6 +30,7 @@
                            <td>{{ __('lang.name') }}</td>
                            <td>{{ __('lang.tax') }}</td>
                            <td>{{ __('lang.currency') }}</td>
+                           <td>{{ __('front.shipping') }}</td>
 
                            <td>{{ __('lang.actions') }}</td>
                        @endslot
@@ -38,18 +42,27 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             <img src="{{asset($item->image)}}" style="width:50px" class="rounded-circle">
-                                           
+
                                             <b> {{ $item->title }}</b>
                                         </td>
-                                        <td>                                           
+                                        <td>
                                             {{ $item->tax }}
                                         </td>
-                                        <td>                                           
+                                        <td>
                                             {{ $item->currency }}
                                         </td>
                                         <td>
+                                            {{ $item->shipping }}
+                                        </td>
+                                        <td>
+                                            @if (auth()->user()->isAbleTo('admin_update-countries'))
+
                                             <a data-href="{{ route('admin.country.edit',$item->id) }}"  data-container=".table-modal"  class="btn btn-modal btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            @endif
+                                            @if (auth()->user()->isAbleTo('admin_delete-countries'))
+
                                             <a href="{{ route('admin.country.delete',$item->id) }}" class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
+                                            @endif
                                         </td>
                                    </tr>
                                @endforeach

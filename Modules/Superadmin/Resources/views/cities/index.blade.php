@@ -17,7 +17,10 @@
         <div class="col-md-12">
            @component('superadmin::layouts.includes.card' )
                @slot('tool')
-                   <a data-href="{{ route('admin.city.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.city') }}</a>
+               @if (auth()->user()->isAbleTo('admin_create-cities'))
+
+               <a data-href="{{ route('admin.city.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.city') }}</a>
+               @endif
                @endslot
 
                @slot('content')
@@ -37,8 +40,14 @@
                                         <td>{{ $item->title }}</td>
 
                                         <td>
-                                            <a data-href="{{ route('admin.city.edit',$item->id) }}"  data-container=".table-modal"  class="btn btn-modal btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            @if (auth()->user()->isAbleTo('admin_update-cities') )
+
+                                                <a data-href="{{ route('admin.city.edit',$item->id) }}"  data-container=".table-modal"  class="btn btn-modal btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            @endif
+                                            @if (auth()->user()->isAbleTo('admin_delete-cities') )
+
                                             <a href="{{ route('admin.city.delete',$item->id) }}" class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
+                                            @endif
                                         </td>
                                    </tr>
                                @endforeach

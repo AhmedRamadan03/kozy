@@ -1,0 +1,89 @@
+        @font-face {
+            font-family: 'my_font';
+            src: url('fonts\Tajawal-Regular.ttf') format("truetype");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .pdf_image {
+            width: 100%;
+            position: absolute !important;
+            top: 0px;
+            right: 0px;
+        }
+
+        .pdf-data {
+            z-index: 5;
+        }
+
+        .w3-display-topright {
+            position: absolute !important;
+            top: 0px;
+            right: 0px;
+        }
+
+        .pdf_image {
+            padding: 0px !important;
+        }
+
+        *,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h5,
+        h6,p {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .flex-item-left {
+            background-color: #f1f1f1;
+            flex: 50%;
+        }
+
+        .flex-item-right {
+            /* background-color: dodgerblue; */
+            flex: 50%;
+        }
+
+        .text-muted {
+            background-color: #f1f1f1;
+            width: 25%;
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center
+        }
+
+        #product {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #product td,
+        #product th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #product tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #product tr:hover {
+            background-color: #ddd;
+        }
+
+        #product th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #aa4104;
+            color: white;
+        }

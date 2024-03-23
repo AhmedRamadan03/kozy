@@ -111,7 +111,6 @@ class LoginController extends Controller
         // Check if the user already has an active session
         if ($user->remember_token !== null) {
             // If a session token exists, log out the user from the previous session
-            auth()->logoutOtherDevices($request->input('password'));
 
             // Update the session token for the current session
             $user->remember_token = $request->session()->token();

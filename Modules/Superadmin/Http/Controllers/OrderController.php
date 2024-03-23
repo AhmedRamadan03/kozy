@@ -4,6 +4,7 @@ namespace Modules\Superadmin\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Superadmin\Http\Requests\StoreColorAndSizeRequest;
 use Modules\Superadmin\Http\Requests\ChangeStatus;
@@ -28,58 +29,31 @@ class OrderController extends Controller
         confirmDelete($title, $text);
 
 
-        return view('superadmin::colors.index',[
-            'data' => $this->model->paginate(20),
+        return view('superadmin::orders.index',[
+            'data' => $this->model->forDrobDown()->filter()->latest()->paginate(20),
+            'statuses' =>  $this->model->statuses(),
 
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('superadmin::colors.form' ,[
-            'resource' => $this->model,
-        ]);
-    }
+
+
+
+
 
     /**
-     * Store a newly created resource in storage.
-     * @param StoreColorAndSizeRequest $request
-     * @return Renderable
-     */
-    public function store(StoreColorAndSizeRequest $request)
-    {
-        $inputs = $request->validated();
-
-        // $this->model->create($inputs);
-        $resource = $this->model->create($inputs);
-        setLogs('store', 'color', $resource  );
-        toast(__('lang.created'), 'success');
-        return back();
-    }
-
-    /**
-     * Show the specified resource.
+     * Show the  resource.
      * @param int $id
      * @return Renderable
      */
     public function show($id)
     {
-        return view('superadmin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('superadmin::colors.form' ,[
-            'resource' => $this->model->findOrFail($id),
+        $resource = $this->model->findOrFail($id);
+        $resource->show = 1;
+        $resource->save();
+        return view('superadmin::orders.show' ,[
+            'data' => $resource,
+            'statuses' =>  $this->model->statuses(),
         ]);
     }
 
@@ -89,17 +63,19 @@ class OrderController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(StoreColorAndSizeRequest $request, $id)
+    public function status( $id)
     {
-        $inputs = $request->validated();
         $resource =  $this->model->findOrFail($id);
         $old = $resource->toArray();
 
 
-        $resource->update($inputs);
+        $resource->update([
+            'status' => request('status'),
+            'show' => 1
+        ]);
 
         $logData = ['old_data' => $old,'new_data'=> $resource->toArray()];
-        setLogs('update', 'color', $resource, $logData );
+        setLogs('update', 'order', $resource, $logData );
 
         toast(__('lang.updated'), 'success');
         return back();
@@ -119,5 +95,46 @@ class OrderController extends Controller
         return back();
     }
 
+
+    public function getNotesModal($id)
+    {
+        $data = $this->model->findOrFail($id);
+        return view('superadmin::orders.notes_modal', compact('data'));
+    }
+
+    public function saveAdminNotes(Request $request)
+    {
+        $data = $this->model->findOrFail($request->id);
+        $data->admin_notes = $request->notes;
+        $data->save();
+        toast(__('lang.updated'), 'success');
+        return back();
+    }
+
+
+    public function pdfview(Request $request, $id)
+    {
+        // Get & Check Data
+        $data = $this->model
+            ->withCount('details')
+            ->findOrFail($id);
+        // Update Order Show
+
+
+            $html = View('superadmin::orders.pdf_page', compact('data'));
+
+            //return $html;
+            $stylesheet = file_get_contents('assets/css/pdf.css');
+            //$pdf = PDF::loadHTML($html);
+            $pdf = new \Mpdf\Mpdf();
+            $pdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
+            //$pdf->WriteHTML($stylesheet2,\Mpdf\HTMLParserMode::HEADER_CSS);
+            $pdf->WriteHTML($html, \Mpdf\HTMLParserMode::HTML_BODY);
+
+            return $pdf->Output('order-details.pdf', 'D');
+
+
+        return view('superadmin::orders.pdf_page', compact('data'));
+    }
 
 }

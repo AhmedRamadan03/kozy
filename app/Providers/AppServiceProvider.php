@@ -37,6 +37,15 @@ class AppServiceProvider extends ServiceProvider
             $countries = Country::get()->pluck('title' , 'id');
             view()->share('countries', $countries);
 
+            // Get Countries For Header
+            $countrieH = Country::get();
+            view()->share('countrieH', $countrieH);
+
+            //count of Order where show 0
+            view()->share('orders_count', DB::table('orders')->where('show', 0)->count());
+
+            session()->put('country',Country::first());
+
         }
     }
 }

@@ -18,7 +18,7 @@ class StoreAdminRequest extends FormRequest
             'username' => 'required|string|min:3',
             'image' => ['nullable', 'image' , 'mimes:jpeg,png,jpg'],
             'email' => ['required', 'email', Rule::unique('admins', 'email')->ignore($this->id)],
-            'phone' => ['required', Rule::unique('admins', 'email')->ignore($this->id)],
+            'phone' => ['required', Rule::unique('admins', 'phone')->ignore($this->id)],
             'password' => ['nullable', 'string' , 'min:6' , Rule::requiredIf(function(){ return !isset($this->id);})],
             'role_id' => 'required|numeric|exists:roles,id',
             'country_id' => 'required|numeric|exists:countries,id',

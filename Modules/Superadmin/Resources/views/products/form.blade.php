@@ -458,8 +458,6 @@
 @stop
 @section('js')
 
-<script src="{{ asset('assets/js/tinymce/tinymce.min.js') }}"></script>
-<script src="{{ asset('assets/js/tinymce/tiny-init.js') }}"></script>
 
 
     <!-- Images Delete Script -->

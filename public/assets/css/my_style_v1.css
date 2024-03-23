@@ -28,6 +28,12 @@ a.sidebar-link div img,div.card.shadow .card-body img{
     padding: 10px;
 }
 
+.display_elem{
+    padding: 10px;
+    border: 1px dashed var(--main-color);
+    border-radius: 10px;
+
+}
 .form-group .required {
     color: #e02222;
     font-size: 12px;

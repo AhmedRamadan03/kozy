@@ -16,6 +16,7 @@ class StoreSliderRequest extends FormRequest
     {
         return [
             'image' => ['nullable', 'image' ,'mimes:jpeg,jpg,png' ,Rule::requiredIf(function(){ return !isset($this->id);})],
+            'country_id' => 'required|exists:countries,id'
         ];
     }
 

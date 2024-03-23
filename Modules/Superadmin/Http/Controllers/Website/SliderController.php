@@ -30,7 +30,7 @@ class SliderController extends Controller
 
 
         return view('superadmin::website.sliders.index',[
-            'data' => $this->model->paginate(20)
+            'data' => $this->model->forDrobDown()->paginate(20)
         ]);
     }
     /**

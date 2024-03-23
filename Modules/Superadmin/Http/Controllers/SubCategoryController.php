@@ -62,7 +62,8 @@ class SubCategoryController extends Controller
         if($request->icon) {
             $inputs['icon'] = uploadImage($inputs['icon'],config('path.CATEGORY_PATH'));
         }
-        $inputs['country_id'] = Category::where('id',$inputs['parent_id'])->first()->counter_id;
+
+        $inputs['country_id'] = Category::where('id',$inputs['parent_id'])->first()->country_id;
         // $this->model->create($inputs);
         $resource = $this->model->create($inputs);
         setLogs('store', 'category', $resource  );

@@ -17,8 +17,11 @@
         <div class="col-md-12">
            @component('superadmin::layouts.includes.card' )
                @slot('tool')
-               <a href="{{ route('admin.mainPageForProducts') }}"  class="btn  btn-info float-end mb-2"> <i class="ti ti-arrow-back-up"></i> {{ __('lang.back')  }}</a>
+                <a href="{{ route('admin.mainPageForProducts') }}"  class="btn  btn-info float-end mb-2"> <i class="ti ti-arrow-back-up"></i> {{ __('lang.back')  }}</a>
+                @if (auth()->user()->isAbleTo('admin_create-colors'))
+
                 <a data-href="{{ route('admin.color.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.color') }}</a>
+                @endif
 
                    @endslot
 
@@ -47,9 +50,14 @@
                                             </span>
                                         </td>
                                         <td>
-
+                                            @if (auth()->user()->isAbleTo('admin_update-colors'))
                                             <a data-href="{{ route('admin.color.edit',$item->id) }}"  data-container=".table-modal"  class="btn btn-modal btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            @endif
+
+                                            @if (auth()->user()->isAbleTo('admin_delete-colors'))
+
                                             <a href="{{ route('admin.color.delete',$item->id) }}" class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
+                                            @endif
                                         </td>
                                    </tr>
                                @endforeach

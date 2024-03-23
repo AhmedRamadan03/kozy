@@ -81,11 +81,5 @@
 
 
 @section('js')
-<script src="https://cdn.tiny.cloud/1/npf26nqjnyh7ns7o68ybgruxr9duvrn2hvyhjwege3uc4ofy/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-    tinymce.init({
-    selector: ".tinymce",
 
-    });
-    </script>
 @endsection

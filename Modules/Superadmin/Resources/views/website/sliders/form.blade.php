@@ -16,6 +16,16 @@
             @csrf
             <div class="modal-body">
                 <div class="row">
+                    @if(auth()->user()->show_all == 1)
+                    <div class="col-md-12 pt-4">
+                        <div class="form-group">
+                            {!! Form::label('country_id', __('lang.choose') . ' ' .__('lang.country'), ['class' => 'form-label']) !!} <span  class="text-danger">: * </span>
+                            {!! Form::select('country_id', $countries, old('country_id', $resource->country_id), ['class' => 'form-control form-select select2' , 'required' , 'id' => 'country_id' , 'placeholder' => __('lang.choose') . ' ' .__('lang.country')]) !!}
+                        </div>
+                    </div>
+                @else
+                    <input type="hidden" name="country_id" value="{{auth()->user()->country_id}}" >
+                @endif
                     <div class="col-12  pt-3 text-center">
 
                         {!! Form::label('image', __('lang.image') , ['class' => 'form-label'] ) !!} <br>

@@ -47,6 +47,14 @@
                             {!! Form::text("currency", old("currency", $resource->currency), ['class' => 'form-control']) !!}
                         </div>
                     </div>
+                    <div class="col-md-12 pt-2">
+                        <div class="form-group">
+                            <label for="shipping">
+                                {{ __('front.shipping') }}
+                            </label>
+                            {!! Form::number("shipping", old("shipping", $resource->shipping), ['class' => 'form-control','step'=>'any']) !!}
+                        </div>
+                    </div>
                     @foreach (config('translatable.locales') as $key => $locale)
                         <div class="col-md-12 pt-2">
                             <div class="form-group">

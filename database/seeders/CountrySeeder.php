@@ -21,6 +21,8 @@ class CountrySeeder extends Seeder
             'ar' => [
                 'title' => 'مصر',
             ],
+            'tax' => 0,
+            'shipping' => 0,
             // 'en' => [
             //     'title' => 'Egypt',
             // ]

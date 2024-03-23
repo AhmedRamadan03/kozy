@@ -82,7 +82,10 @@
                @slot('tool')
                <a href="{{ route('admin.mainPageForProducts') }}"  class="btn  btn-info float-end mb-2"> <i class="ti ti-arrow-back-up"></i> {{ __('lang.back')  }}</a>
 
-                   <a href="{{ route('admin.product.create') }}"  class="btn btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.product') }}</a>
+                    @if (auth()->user()->isAbleTo('admin_create-products'))
+
+                    <a href="{{ route('admin.product.create') }}"  class="btn btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.product') }}</a>
+                    @endif
                @endslot
 
                @slot('content')
@@ -149,10 +152,17 @@
                                             </a>
                                         </td>
                                         <td>
-
+                                            @if (auth()->user()->isAbleTo('admin_read-products'))
                                             <a href="{{ route('admin.product.show',$item->id) }}" class="btn  btn-info btn-sm"><i class="ti ti-eye"></i></a>
+                                            @endif
+                                            @if (auth()->user()->isAbleTo('admin_update-products'))
+
                                             <a href="{{ route('admin.product.edit',$item->id) }}" class="btn  btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            @endif
+
+                                            @if (auth()->user()->isAbleTo('admin_delete-products'))
                                             <a href="{{ route('admin.product.delete',$item->id) }}" class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
+                                            @endif
                                         </td>
                                    </tr>
                                @endforeach

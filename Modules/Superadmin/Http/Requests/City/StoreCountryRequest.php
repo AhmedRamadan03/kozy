@@ -20,6 +20,7 @@ class StoreCountryRequest extends FormRequest
             'en.title' => 'required|string|max:150',
             'currency' => 'nullable',
             'tax' => 'nullable',
+            'shipping' => 'nullable',
         ];
     }
 

@@ -45,7 +45,10 @@
         <div class="col-md-12">
            @component('superadmin::layouts.includes.card' )
                @slot('tool')
-                   <a data-href="{{ route('admin.brand.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.brand') }}</a>
+               @if (auth()->user()->isAbleTo('admin_create-brands'))
+
+               <a data-href="{{ route('admin.brand.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.brand') }}</a>
+               @endif
                @endslot
 
                @slot('content')
@@ -84,8 +87,15 @@
                                             </a>
                                         </td>
                                         <td>
+                                            @if (auth()->user()->isAbleTo('admin_update-brands'))
+
                                             <a data-href="{{ route('admin.brand.edit',$item->id) }}"  data-container=".table-modal"  class="btn btn-modal btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            @endif
+
+                                            @if (auth()->user()->isAbleTo('admin_delete-brands'))
+
                                             <a href="{{ route('admin.brand.delete',$item->id) }}" class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
+                                            @endif
                                         </td>
                                    </tr>
                                @endforeach

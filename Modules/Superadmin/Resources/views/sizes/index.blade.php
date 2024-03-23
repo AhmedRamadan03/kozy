@@ -18,7 +18,10 @@
            @component('superadmin::layouts.includes.card' )
                @slot('tool')
                <a href="{{ route('admin.mainPageForProducts') }}"  class="btn  btn-info float-end mb-2"> <i class="ti ti-arrow-back-up"></i> {{ __('lang.back')  }}</a>
-                   <a data-href="{{ route('admin.size.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.size') }}</a>
+               @if (auth()->user()->isAbleTo('admin_create-sizes'))
+
+               <a data-href="{{ route('admin.size.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.size') }}</a>
+               @endif
 
                    @endslot
 
@@ -45,9 +48,14 @@
                                             {{ $item->value }}
                                         </td>
                                         <td>
+                                            @if (auth()->user()->isAbleTo('admin_update-sizes'))
 
                                             <a data-href="{{ route('admin.size.edit',$item->id) }}"  data-container=".table-modal"  class="btn btn-modal btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            @endif
+                                            @if (auth()->user()->isAbleTo('admin_delete-sizes'))
+
                                             <a href="{{ route('admin.size.delete',$item->id) }}" class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
+                                            @endif
                                         </td>
                                    </tr>
                                @endforeach

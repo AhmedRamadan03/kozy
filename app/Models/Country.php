@@ -13,7 +13,7 @@ class Country extends Model implements TranslatableContract
 {
     use HasFactory, Translatable;
 
-    public $fillable = ['image','tax','currency'];
+    public $fillable = ['image','tax','currency','shipping'];
     protected $translatedAttributes = ['title'];
 
 

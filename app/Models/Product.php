@@ -18,7 +18,7 @@ class Product extends Model implements TranslatableContract
     protected $translatedAttributes = ['title','description','short_description','meta_keywords','meta_description'];
 
 
-    protected $appends = [  'all_images'];
+    protected $appends = [  'all_images','favorite'];
 
 
     /**
@@ -76,6 +76,20 @@ class Product extends Model implements TranslatableContract
         return $this->hasMany(ProductImages::class);
     }
 
+    public function getFavoriteAttribute()
+    {
+        return DB::table('product_favs')->where('user_id',auth()->user()->id)->where('product_id',$this->id)->exists();
+    }
+
+    public function variations()
+    {
+        return $this->hasMany(ProductVariation::class, 'product_id');
+    }
+      //get all variations color of product without duplicates
+      public function getProSizes($colorId)
+      {
+          return  ProductVariation::where('product_id', $this->id)->where('color_id', $colorId)->get();
+      }
     public function productColors()
     {
         return $this->hasMany(ProductVariation::class, 'product_id')->select('color_id') // Select the desired column for grouping
@@ -116,7 +130,7 @@ class Product extends Model implements TranslatableContract
         {
             return $query->whereTranslationLike('title', '%' . request()->search . '%')
                         ->orWhereTranslationLike('description','%' . request()->search . '%')
-                        ->orWhere('sku',request()->search);
+                        ->orWhere('sku', 'like', '%' . request()->search . '%');
         }
 
         if(request()->country_id)
@@ -128,15 +142,39 @@ class Product extends Model implements TranslatableContract
         {
             return $query->where('brand_id',request()->brand_id);
         }
+        if(request()->brand)
+        {
+            $id = Brand::where('slug',request()->brand)->first()->id;
+
+            return $query->where('brand_id',$id);
+        }
 
         if(request()->category_id)
         {
             return $query->where('category_id',request()->category_id);
         }
+        if(request()->category)
+        {
+            $catId = Category::where('slug',request()->category)->first()->id;
+            return $query->where('category_id',$catId);
+        }
+        if(request()->main_cat)
+        {
+            $catId = Category::where('slug',request()->main_cat)->first()->id;
+            $ids = Category::where('parent_id',$catId)->pluck('id');
+            return $query->whereIn('category_id',$ids);
+        }
 
         if(request()->hide)
         {
             return $query->where('hide',request()->hide);
+        }
+
+        if (request()->min && request()->max) {
+            $query->whereBetween('after_discount', [request()->min, request()->max]);
+        }
+        if (request()->sort) {
+            $query->orderBy('created_at', request()->sort);
         }
 
         if(request()->discount)

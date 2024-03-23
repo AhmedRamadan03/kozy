@@ -1,0 +1,470 @@
+:root{
+    --primary : #dcc861;
+    --secondary : #F9C0C1
+}
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+/* @import url('https://fonts.googleapis.com/css2?family=Tajawal&display=swap'); */
+body,h1,h2,h3,h4,h5,h6,p,a,span,div,* {
+    /* font-family: 'Tajawal', sans-serif; */
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 600 !important;
+}
+
+body,html{
+    overflow-x: hidden !important;
+
+}
+.home--bg{
+     background-image: url(../../website/img/body.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* .dropdown-toggle::after {
+    color: #fff !important;
+} */
+
+.bg--nav{
+    background-color: #F9FAFB !important;
+}
+.navbar .navbar-nav .nav-link::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: .5s;
+}
+.navbar .navbar-nav .nav-link{
+    color: #000  !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.navbar .navbar-nav .nav-link.active{
+    background-color: transparent !important;
+    border-bottom: 2px  solid var(--primary);
+    color: var(--primary) !important;
+    font-weight: 600 !important;
+}
+
+
+.main-color{
+    color: var(--primary) !important;
+}
+.bg-main{
+    background-color: var(--primary) !important;
+}
+.bg-sec{
+    background-color: var(--secondary) !important;
+}
+
+ /* -------------------------sliders css ---------------  */
+.--sliders{
+    background-image: url(../img/slider.png);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 750px;
+}
+.slider--desc{
+font-size: 24px;
+line-height: 40px;
+color: #14090A;
+}
+.testimonial-carousel .owl-nav div {
+    border: 1px solid var(--primary);
+    background-color: transparent !important;
+
+}
+.testimonial-carousel .owl-nav div svg * {
+    fill : var(--primary) !important
+}
+.testimonial-carousel .owl-nav div:hover svg * {
+    fill : #fff !important
+}
+
+.btn--custom
+{
+    background-color: var(--primary);
+    color: #fff !important;
+    border-radius: 50px ;
+    padding: 10px 30px;
+    font-weight: 600;
+}
+.btn--outline--custom
+{
+    background-color: transparent;
+    color: var(--primary) !important;
+    border: 1px solid var(--primary);
+    border-radius: 50px !important ;
+    padding: 10px 30px;
+}
+
+
+
+/************************************************************************/
+.ltr .feature--item{
+    background-color: #F9FAFB;
+    padding: 30px 30px;
+    border-radius: 8px;
+    border-top: 10px solid var(--secondary);
+    border-left: 10px solid var(--secondary);
+}
+.ltr .feature--item:hover{
+    background-color: #F9FAFB;
+    border-radius: 8px;
+    border-top: 10px solid var(--primary);
+    border-left: 10px solid var(--primary);
+    transition: .5s;
+}
+.rtl .feature--item{
+    background-color: #F9FAFB;
+    padding: 30px 30px;
+    border-radius: 8px;
+    border-top: 10px solid var(--secondary);
+    border-right: 10px solid var(--secondary);
+}
+.rtl .feature--item:hover{
+    background-color: #F9FAFB;
+    border-radius: 8px;
+    border-top: 10px solid var(--primary);
+    border-right: 10px solid var(--primary);
+    transition: .5s;
+}
+
+.cat--active{
+    color: #000 !important;
+    border-bottom: 2px solid var(--primary);
+}
+.cat--active img{
+    filter: invert(25%) sepia(87%) saturate(3220%) hue-rotate(342deg) brightness(94%) contrast(97%);
+}
+
+.offer--item{
+    background-color: #FDEBEB;
+    border-radius: 20px ;
+}
+.offer--item .offer--image{
+    height: 215px;
+    width: 220px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+ul#demo li{
+    background-color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: larger;
+    font-weight: 500;
+    color: var(--primary);
+}
+.ltr .btn--app{
+    background-color: #310001;
+    border-radius: 8px;
+    color: #fff !important;
+    text-align: left;
+}
+.rtl .btn--app{
+    background-color: #310001;
+    border-radius: 8px;
+    color: #fff !important;
+    text-align: right;
+}
+.bb-main{
+    border-bottom: 2px solid var(--primary);
+}
+.product--item .product--image{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 215px;
+    width: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.product--item:hover .product--image div div .eye path{
+    fill: var(--primary) !important;
+    transition: .5s;
+}
+.product--item:hover .product--content div a svg circle{
+    fill: var(--primary);
+    transition: .5s;
+}
+.product--item:hover .product--content div a svg path{
+    fill: var(--primary);
+    transition: .5s;
+    stroke: #fff;
+}
+.product--item:hover .product--image div div .eye circle{
+    stroke: var(--primary) !important;
+    transition: .5s;
+}
+.badge--new{
+    background-color: var(--primary);
+    color: #fff;
+    padding: 10px 20px;
+    /* margin: 10px; */
+}
+
+
+/************* footer *********************/
+footer.footer{
+    background-color: #1A1A1A;
+    color: #fff;
+}
+div.copyright div div div.links a:hover svg circle{
+    fill: var(--primary);
+    transition: .5s;
+}
+div.copyright div div div.links a:hover svg path{
+    fill: #fff;
+    transition: .5s;
+}
+
+.panner{
+    /* background-image: url(../../website/img/panner.png); */
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    height: 200px;
+}
+.border--main{
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+}
+.--categories{
+    background-color: #FDEBEB;
+    border-radius: 8px ;
+}
+.hidden{
+    display: none;
+}
+.w3-check{
+    accent-color: var(--primary);
+}
+
+
+.filter-price {
+    width: 220px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .price-title {
+    position: relative;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 400;
+    background: #d58e32;
+    padding:10px;
+  }
+
+  .price-container {
+        display: flex;
+      border: 1px solid #ccc;
+      padding: 5px;
+      margin-left: 57px;
+    width:100px;
+  }
+
+  .price-field {
+    position: relative;
+    width: 100%;
+    height: 36px;
+    box-sizing: border-box;
+    padding-top: 15px;
+    padding-left: 0px;
+  }
+
+  .price-field input[type=range] {
+      position: absolute;
+  }
+
+  /* Reset style for input range */
+
+  .price-field input[type=range] {
+    width: 100%;
+      /* height: 7px; */
+      outline: 0;
+      box-sizing: border-box;
+      border-radius: 5px;
+      pointer-events: none;
+      -webkit-appearance: none;
+  }
+
+  .price-field input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+  }
+
+  .price-field input[type=range]:active,
+  .price-field input[type=range]:focus {
+    outline: 0;
+  }
+
+  .price-field input[type=range]::-ms-track {
+    width: 188px;
+    height: 2px;
+    border: 0;
+    outline: 0;
+    /* box-sizing: border-box; */
+    border-radius: 5px;
+    pointer-events: none;
+    background: var(--primary);
+    border-color: var(--primary);;
+    color: ;
+    border-radius: 5px;
+  }
+
+  /* Style toddler input range */
+
+  .price-field input[type=range]::-webkit-slider-thumb {
+    /* WebKit/Blink */
+      position: relative;
+      -webkit-appearance: none;
+      margin: 0;
+      border: 0;
+      outline: 0;
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      margin-top: -8px;
+      background-color: var(--primary);
+      cursor: pointer;
+      cursor: pointer;
+      pointer-events: all;
+      z-index: 100;
+  }
+
+  .price-field input[type=range]::-moz-range-thumb {
+    /* Firefox */
+    position: relative;
+    appearance: none;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin-top: -5px;
+    background-color: var(--primary);
+    cursor: pointer;
+    cursor: pointer;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 100;
+  }
+
+  .price-field input[type=range]::-ms-thumb  {
+    /* IE */
+    position: relative;
+    appearance: none;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin-top: -5px;
+    background-color: var(--primary);
+    cursor: pointer;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 100;
+  }
+
+  /* Style track input range */
+
+  .price-field input[type=range]::-webkit-slider-runnable-track {
+    /* WebKit/Blink */
+    width: 188px;
+    height: 2px;
+    cursor: pointer;
+    background: #555;
+    border-radius: 5px;
+  }
+
+  .price-field input[type=range]::-moz-range-track {
+    /* Firefox */
+    width: 188px;
+    height: 2px;
+    cursor: pointer;
+    background: #242424;
+    border-radius: 5px;
+  }
+
+  .price-field input[type=range]::-ms-track {
+    /* IE */
+    width: 188px;
+    height: 2px;
+    cursor: pointer;
+    background: #242424;
+    border-radius: 5px;
+  }
+
+  /* Style for input value block */
+
+  .price-wrap {
+    display: flex;
+    color: #242424;
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 400;
+    margin-bottom: 0px;
+  }
+
+  .price-wrap-1,
+  .price-wrap-2 {
+    display: flex;
+    margin-left: 0px;
+  }
+
+  .price-title {
+    margin-right: 5px;
+  }
+
+  .price-wrap_line {
+      margin: 6px 0px 5px 5px;
+  }
+
+  .price-wrap #one,
+  .price-wrap #two {
+    width: 30px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    margin-right: 2px;
+    background:  0;
+    border: 0;
+    outline: 0;
+    color: #242424;
+    font-family: 'Karla', 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 400;
+  }
+
+  .price-wrap label {
+      text-align: right;
+      margin-top: 6px;
+      padding-left: 5px;
+  }
+
+  /* Style for active state input */
+
+  .price-field input[type=range]:hover::-webkit-slider-thumb {
+    box-shadow: 0 0 0 0.5px #242424;
+    transition-duration: 0.3s;
+  }
+
+  .price-field input[type=range]:active::-webkit-slider-thumb {
+    box-shadow: 0 0 0 0.5px #242424;
+    transition-duration: 0.3s;
+  }

@@ -31,8 +31,9 @@
                           <button class="nav-link" id="meta-tag-tab" data-bs-toggle="tab" data-bs-target="#meta-tag" type="button" role="tab" aria-controls="meta-tag" aria-selected="false">{{ __('lang.meta_tag') }}</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                          <button class="nav-link" id="short-tab" data-bs-toggle="tab" data-bs-target="#short" type="button" role="tab" aria-controls="short" aria-selected="false">{{ __('lang.prefixes') }}</button>
+                          <button class="nav-link" id="return_rules-tab" data-bs-toggle="tab" data-bs-target="#return_rules" type="button" role="tab" aria-controls="return_rules" aria-selected="false">{{ __('lang.return_rules') }}</button>
                         </li>
+
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="main-info" role="tabpanel" aria-labelledby="main-info-tab">
@@ -44,30 +45,42 @@
                         <div class="tab-pane fade" id="meta-tag" role="tabpanel" aria-labelledby="meta-tag-tab">
                             <div class="col-md-12 pt-3">
                                 <div class="form-group">
-                                   <label for="courses_meta_tag">{{ __('lang.courses_meta_tag') }}</label>
+                                   <label for="meta_banner">{{ __('lang.meta_banner') }}</label>
                                     <div style="width: 100%;border: 1px dashed #ccc; padding: 10px">
-                                        <img class=" image-preview-courses_bannar" width="100%"  src="{{ asset(optional($settings->where('key','courses_bannar')->first())->value) }}">
+                                        <img class=" image-preview-mata_banner" width="100%"  src="{{ asset(optional($settings->where('key','mata_banner')->first())->value) }}">
                                     </div>
                                 <br>
-                                <label for="courses_bannar"class="btn btn-primary text-white mt-2">
+                                <label for="mata_banner"class="btn btn-primary text-white mt-2">
                                     <i class="ti ti-cloud-upload fs-6 cursor-pointer"></i>
                                 </label>
 
-                                <input type="file" onchange="changeImage(this, 'courses_bannar')" id="courses_bannar" class="d-none form-control mt-3" name="courses_bannar" >
+                                <input type="file" onchange="changeImage(this, 'mata_banner')" id="mata_banner" class="d-none form-control mt-3" name="mata_banner" >
 
 
                                 </div>
 
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="short" role="tabpanel" aria-labelledby="short-tab">
-                            @include('superadmin::settings.includs.shorts' ,['settings' => $settings])
+                        <div class="tab-pane fade" id="return_rules" role="tabpanel" aria-labelledby="return_rules-tab">
+                            @foreach (config('translatable.locales') as $key => $locale)
+                            <div class="col-md-12 pt-3">
+                                <div class="form-group">
+                                    <label for="name">
+                                        {{ __('lang.return_rules_'.$locale) }}
+                                    </label>
+                                    {!! Form::textarea("return_rules_".$locale, old("return_rules_{$locale}", optional($settings->where('key','return_rules_'.$locale)->first())->value), ['class' => 'form-control tinymce']) !!}
+                                </div>
+                            </div>
+                        @endforeach
                         </div>
+
                     </div>
+                    @if (auth()->user()->isAbleTo('admin_update-settings'))
 
                     <div class="modal-footer pt-5 text-center">
                         <button type="submit" class="btn btn-primary">{{ __('lang.save') }}</button>
                     </div>
+                    @endif
                  </form>
                @endslot
            @endcomponent
@@ -80,11 +93,5 @@
 @endsection
 
 @section('js')
-<script src="https://cdn.tiny.cloud/1/npf26nqjnyh7ns7o68ybgruxr9duvrn2hvyhjwege3uc4ofy/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-    tinymce.init({
-    selector: ".tinymce",
 
-    });
-    </script>
 @endsection

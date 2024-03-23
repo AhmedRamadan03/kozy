@@ -117,6 +117,21 @@ class ToDoController extends Controller
         return back();
     }
 
+
+    public function getNotesModal($id)
+    {
+        $data = $this->model->findOrFail($id);
+        return view('superadmin::todos.notes_modal', compact('data'));
+    }
+
+    public function saveNotes(Request $request)
+    {
+        $data = $this->model->findOrFail($request->id);
+        $data->notes = $request->notes;
+        $data->save();
+        toast(__('lang.updated'), 'success');
+        return back();
+    }
     /**
      * Remove the specified resource from storage.
      * @param int $id

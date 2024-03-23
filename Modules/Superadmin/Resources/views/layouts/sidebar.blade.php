@@ -21,6 +21,8 @@
           </a>
         </li>
         @endif
+        @if (auth()->user()->isAbleTo('admin_read-products') || auth()->user()->isAbleTo('admin_read-brands') || auth()->user()->isAbleTo('admin_read-categories') || auth()->user()->isAbleTo('admin_read-subcategories')|| auth()->user()->isAbleTo('admin_read-colors')|| auth()->user()->isAbleTo('admin_read-sizes')|| auth()->user()->isAbleTo('admin_read-offers'))
+
         <li class="sidebar-item">
             <a class="sidebar-link main-color  p-1 {{ request()->routeIs('admin.product*')||request()->routeIs('admin.brand*') ||request()->routeIs('admin.category*')||request()->routeIs('admin.subcat*') ? 'active':'' }}" href="{{ route('admin.mainPageForProducts') }}" aria-expanded="false">
               <div>
@@ -29,23 +31,29 @@
               <div class="hide-menu main-color ">{{ __('lang.product_categories') }}</div>
             </a>
           </li>
+        @endif
+        @if (auth()->user()->isAbleTo('admin_read-orders'))
+
         <li class="sidebar-item">
-            <a class="sidebar-link main-color  p-1 {{request()->routeIs('admin.order*') ? 'active':'' }}" href="{{ route('admin.mainPageForProducts') }}" aria-expanded="false">
+            <a class="sidebar-link main-color  p-1 {{request()->routeIs('admin.order*') ? 'active':'' }}" href="{{ route('admin.order.index') }}" aria-expanded="false">
               <div>
                   <img width="40px" src="{{ asset('icons/order.png') }}" alt="">
               </div>
-              <div class="hide-menu main-color ">{{ __('lang.orders') }}</div>
+              <div class="hide-menu main-color ">{{ __('lang.orders') }} ({{ $orders_count }})</div>
             </a>
           </li>
+          @endif
+          @if (auth()->user()->isAbleTo('admin_read-todos'))
+
         <li class="sidebar-item">
             <a class="sidebar-link main-color  p-1 {{request()->routeIs('admin.todo*') ? 'active':'' }}" href="{{ route('admin.todo.index') }}" aria-expanded="false">
               <div>
-                  <img width="40px" src="{{ asset('icons/todo.png') }}" alt="">
+                  <img width="40px" src="{{ asset('icons/task.png') }}" alt="">
               </div>
               <div class="hide-menu main-color ">{{ __('lang.todos') }}</div>
             </a>
           </li>
-
+          @endif
         @if (auth()->user()->isAbleTo('admin_read-admins') || auth()->user()->isAbleTo('admin_read-roles'))
 
         <li class="sidebar-item">
@@ -54,6 +62,17 @@
                   <img width="40px" src="{{ asset('icons/security.png') }}" alt="">
               </div>
               <div class="hide-menu main-color ">{{ __('lang.security') }}</div>
+            </a>
+          </li>
+        @endif
+        @if (auth()->user()->isAbleTo('admin_read-orders_report') || auth()->user()->isAbleTo('admin_read-products_report'))
+
+        <li class="sidebar-item">
+            <a class="sidebar-link main-color  p-1 {{ request()->routeIs('admin.PageOfReport') ? 'active':'' }}" href="{{ route('admin.PageOfReport') }}" aria-expanded="false">
+              <div>
+                  <img width="40px" src="{{ asset('icons/report.png') }}" alt="">
+              </div>
+              <div class="hide-menu main-color ">{{ __('lang.reports') }}</div>
             </a>
           </li>
         @endif

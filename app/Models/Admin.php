@@ -23,9 +23,9 @@ class Admin extends Authenticatable
     public function scopeForDropDown($query)
     {
         if(auth()->user()->show_all == 0){
-            return $query->where('country_id',auth()->user()->country_id)->where('show_all',0)->where('id','!=', auth()->user()->id);
+            return $query->where('country_id',auth()->user()->country_id)->where('show_all',0);
         }else{
-            return $query->where('id','!=', auth()->user()->id);
+            return $query;
         }
     }
 

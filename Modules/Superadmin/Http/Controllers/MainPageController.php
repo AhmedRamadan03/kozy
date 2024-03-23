@@ -5,6 +5,7 @@ namespace Modules\Superadmin\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Offer;
 use App\Models\Product;
 use App\Models\Size;
 use Illuminate\Contracts\Support\Renderable;
@@ -99,6 +100,14 @@ class MainPageController extends Controller
                 'url' => route('admin.product.index'),
                 'image' => asset('icons/product.png'),
             ],
+            [
+                'show' => auth()->user('admin')->isAbleTo('admin_read-offers'),
+                'title' => __('lang.offers'),
+                'count'=> Offer::ForDrobDown()->count(),
+                'description' => __('lang.add') . ' ' .__('lang.offer') . ' , ' . __('lang.edit') . ' ' .__('lang.offer'),
+                'url' => route('admin.offer.index'),
+                'image' => asset('icons/product.png'),
+            ],
 
 
         ];
@@ -109,49 +118,49 @@ class MainPageController extends Controller
     }
 
 
-    public function mainPageForEducation(){
+    public function PageOfReport(){
 
         $pages = [
             [
-                'show' => auth()->user('admin')->isAbleTo('admin_read-courses'),
-                'title' => __('lang.courses'),
-                'description' => __('lang.add') . ' ' .__('lang.course') . ' , ' . __('lang.edit') . ' ' .__('lang.course'),
-                'url' => route('admin.course.index'),
-                'image' => asset('icons/course.png'),
+                'show' => auth()->user('admin')->isAbleTo('admin_read-orders_report'),
+                'title' => __('lang.order_report'),
+                'description' => __('lang.report_of_orders'),
+                'url' => route('admin.report.orders'),
+                'image' => asset('icons/order.png'),
             ],
             [
-                'show' => auth()->user('admin')->isAbleTo('admin_read-lectures'),
-                'title' => __('lang.lectures'),
-                'description' => __('lang.add') . ' ' .__('lang.lecture') . ' , ' . __('lang.edit') . ' ' .__('lang.lecture'),
-                'url' => route('admin.lecture.index'),
-                'image' => asset('icons/lecture.png'),
+                'show' => auth()->user('admin')->isAbleTo('admin_read-orders_report'),
+                'title' => __('lang.statistics_report'),
+                'description' => __('lang.statistics_report'),
+                'url' => route('admin.report.statisticsReport'),
+                'image' => asset('icons/order.png'),
             ],
             [
-                'show' => auth()->user('admin')->isAbleTo('admin_read-courses'),
-                'title' => __('lang.assignments'),
-                'description' => __('lang.add') . ' ' .__('lang.assignment') . ' , ' . __('lang.correct') . ' ' .__('lang.assignments'),
-                'url' => route('admin.assignment.index'),
-                'image' => asset('icons/assing.png'),
+                'show' => auth()->user('admin')->isAbleTo('admin_read-products_report'),
+                'title' => __('lang.products_qty_reports'),
+                'description' => __('lang.products_qty_reports'),
+                'url' => route('admin.report.productsReport'),
+                'image' => asset('icons/product.png'),
             ],
             [
-                'show' => auth()->user('admin')->isAbleTo('admin_read-courses'),
-                'title' => __('lang.exams'),
-                'description' => __('lang.add') . ' ' .__('lang.exam') . ' , ' . __('lang.manage') . ' ' .__('lang.exams'),
-                'url' => route('admin.exam.index'),
-                'image' => asset('icons/assing.png'),
+                'show' => auth()->user('admin')->isAbleTo('admin_read-products_report'),
+                'title' => __('lang.products_best_sale'),
+                'description' => __('lang.products_best_sale'),
+                'url' => route('admin.report.trendingProducts'),
+                'image' => asset('icons/product.png'),
             ],
             [
-                'show' => auth()->user('admin')->isAbleTo('admin_read-courses'),
-                'title' => __('lang.files'),
-                'description' => __('lang.add') . ' ' .__('lang.file') . ' , ' . __('lang.manage') . ' ' .__('lang.files'),
-                'url' => route('admin.file.index'),
-                'image' => asset('icons/lecture.png'),
+                'show' => auth()->user('admin')->isAbleTo('admin_read-activity_logs'),
+                'title' => __('lang.activity_logs'),
+                'description' => __('lang.activity_logs'),
+                'url' => route('admin.report.activityLogs'),
+                'image' => asset('icons/task.png'),
             ],
 
         ];
         return view('superadmin::main_pages.index',[
             'pages' =>$pages,
-            'title' => __('lang.educations')
+            'title' => __('lang.orders')
         ]);
     }
 

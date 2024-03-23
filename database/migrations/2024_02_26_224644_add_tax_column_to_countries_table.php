@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('countries', function (Blueprint $table) {
             $table->float('tax')->defualt(0);
+            $table->float('shipping')->defualt(0);
             $table->string('currency')->nullable();
         });
     }

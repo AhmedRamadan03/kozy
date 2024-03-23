@@ -224,7 +224,7 @@ class ProductController extends Controller
     public function getBrandsAndCategories()
     {
         $brands = Brand::active()->where('country_id',request()->country_id)->get();
-        $categories = Category::active()->where('country_id',request()->country_id)->child()->get();
+        $categories = Category::active()->child()->where('country_id',request()->country_id)->get();
         return response()->json([
             'brands' => $brands,
             'categories' => $categories

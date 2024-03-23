@@ -30,17 +30,8 @@
         </div>
     @endforeach
 
-    @foreach (config('translatable.locales') as $key => $locale)
-        <div class="col-md-6 pt-3">
-            <div class="form-group">
-                <label for="name">
-                    {{ __('lang.description_'.$locale) }}
-                </label>
-                {!! Form::textarea("description_".$locale, old("description_{$locale}", optional($settings->where('key','description_'.$locale)->first())->value), ['class' => 'form-control tinymce_ar']) !!}
-            </div>
-        </div>
-    @endforeach
-    <div class="col-md-12 pt-3">
+
+    {{-- <div class="col-md-12 pt-3">
         <div class="form-group">
             <label
                 for="google_analytics">{{ __('lang.google_analytics') }}</label>
@@ -48,7 +39,7 @@
 
 
         </div>
-    </div>
+    </div> --}}
     <div class="col-md-3 pt-3">
         <div class="form-group">
            <label for="logo">{{ __('lang.logo') }}</label>
@@ -98,7 +89,7 @@
     </div>
 
 
-    <div class="col-md-3 pt-3">
+    {{-- <div class="col-md-3 pt-3">
         <div class="form-group">
            <label for="main_color">{{ __('lang.main_color') }}</label>
            <input type="color" id="main_color" name="main_color" value="{{ optional($settings->where('key','main_color')->first())->value ?? '#ff0000' }}" class="form-control">
@@ -121,5 +112,5 @@
         <input type="file" onchange="changeImage(this, 'login_image')" id="login_image" class="d-none form-control mt-3" name="login_image" >
         </div>
 
-    </div>
+    </div> --}}
 </div>

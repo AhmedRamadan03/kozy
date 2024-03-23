@@ -28,4 +28,14 @@ class Setting extends Model
             Setting::create(['key' => $key,'value' => $value]);
         }
     }
+
+    public static function getValue($key)
+    {
+        $setting = self::where('key',$key)->first();
+        if ($setting) {
+            return $setting->value;
+        }
+        return null;
+    }
+
 }

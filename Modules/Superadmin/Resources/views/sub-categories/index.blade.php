@@ -18,7 +18,10 @@
            @component('superadmin::layouts.includes.card' )
                @slot('tool')
                 <a href="{{ route('admin.category.index') }}"  class="btn  btn-info float-end mb-2"> <i class="ti ti-arrow-back-up"></i> {{ __('lang.back')  }}</a>
-                   <a data-href="{{ route('admin.subcat.create',$mainCategory->id) }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.category') }}</a>
+                @if (auth()->user()->isAbleTo('admin_create-sub_categories'))
+
+                <a data-href="{{ route('admin.subcat.create',$mainCategory->id) }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.category') }}</a>
+                @endif
 
                    @endslot
 
@@ -52,9 +55,14 @@
                                             </a>
                                         </td>
                                         <td>
+                                            @if (auth()->user()->isAbleTo('admin_update-sub_categories'))
 
                                             <a data-href="{{ route('admin.subcat.edit',$item->id) }}"  data-container=".table-modal"  class="btn btn-modal btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            @endif
+                                            @if (auth()->user()->isAbleTo('admin_delete-sub_categories'))
+
                                             <a href="{{ route('admin.subcat.delete',$item->id) }}" class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
+                                            @endif
                                         </td>
                                    </tr>
                                @endforeach

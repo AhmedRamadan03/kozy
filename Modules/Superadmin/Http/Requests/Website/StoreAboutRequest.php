@@ -17,11 +17,11 @@ class StoreAboutRequest extends FormRequest
         return [
             'image' => ['nullable', 'image', 'mimes:jpeg,jpg,png', Rule::requiredIf(function(){ return isset($this->id);})],
             'ar.title' =>'required|string|max:255',
-            // 'en.title' =>'required|string|max:255',
+            'en.title' =>'required|string|max:255',
             'ar.short_description' =>'required|string',
-            // 'en.short_description' =>'required|string',
+            'en.short_description' =>'required|string',
             'ar.description' =>'nullable|string',
-            //'en.description' =>'nullable|string',
+            'en.description' =>'nullable|string',
         ];
     }
 

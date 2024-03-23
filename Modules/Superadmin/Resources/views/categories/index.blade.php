@@ -45,7 +45,10 @@
         <div class="col-md-12">
            @component('superadmin::layouts.includes.card' )
                @slot('tool')
-                   <a data-href="{{ route('admin.category.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.category') }}</a>
+               @if (auth()->user()->isAbleTo('admin_create-categories'))
+
+               <a data-href="{{ route('admin.category.create') }}"  data-container=".table-modal" class="btn btn-modal btn-primary float-end mb-2"> <i class="ti ti-plus"></i> {{ __('lang.add') . ' ' . __('lang.category') }}</a>
+               @endif
                @endslot
 
                @slot('content')
@@ -84,14 +87,23 @@
                                             </a>
                                         </td>
                                         <td>
+                                            @if (auth()->user()->isAbleTo('admin_read-sub_categories'))
+
                                             <a href="{{ route('admin.subcat.index',$item->id) }}"  class="btn  text-white btn-primary btn-sm position-relative">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
                                                 <b>{{__('lang.subcats')}}</b>
                                                 <span class="badge position-absolute w3-blue" style="top: -7px;
                                                 right: -10px;">{{$item->children()->count()}}</span>
                                             </a>
+                                            @endif
+                                            @if (auth()->user()->isAbleTo('admin_update-categories'))
+
                                             <a data-href="{{ route('admin.category.edit',$item->id) }}"  data-container=".table-modal"  class="btn btn-modal btn-primary btn-sm"><i class="ti ti-pencil"></i></a>
+                                            @endif
+                                            @if (auth()->user()->isAbleTo('admin_delete-categories'))
+
                                             <a href="{{ route('admin.category.delete',$item->id) }}" class="btn btn-danger sw-alert btn-sm"><i class="ti ti-trash"></i></a>
+                                            @endif
                                         </td>
                                    </tr>
                                @endforeach

@@ -18,12 +18,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->index()->constrained()->onDelete('set null');
             $table->foreignId('country_id')->nullable()->index()->constrained()->onDelete('set null');
-            $table->string('username');
+            $table->string('name');
             $table->longText('address');
             $table->decimal('total', 15);
             $table->decimal('sub_total', 15);
             $table->decimal('tax', 15);
-            $table->decimal('shipping_fees', 15);
+            $table->decimal('shipping', 15);
             $table->decimal('discount', 15)->nullable();
             $table->decimal('after_discount', 15)->nullable();
             $table->string('coupon')->nullable();

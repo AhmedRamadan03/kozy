@@ -9,8 +9,9 @@
 <script src="{{ asset('assets/js/sweetalert2.js') }}"></script>
 {{-- <script src="{{ asset('assets/js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 <script src="{{ asset('assets/js/tinymce/tiny-init.js') }}" referrerpolicy="origin"></script> --}}
+<script src="{{ asset('assets/js/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('assets/js/tinymce/tiny-init.js') }}"></script>
 
- @yield('js')
 <script>
      function changeImage(element, id) {
         if (element.files && element.files[0]) {
@@ -97,3 +98,4 @@
         }
     }
 </script>
+@yield('js')

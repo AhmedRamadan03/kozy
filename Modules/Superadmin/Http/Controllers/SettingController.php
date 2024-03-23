@@ -42,8 +42,8 @@ class SettingController extends Controller
         if (isset($inputs['login_image'])) {
             $inputs['login_image'] = uploadImage($inputs['login_image'] , config('path.SETTING_PATH') , optional($setting->where('key','login_image')->first())->value);
         }
-        if (isset($inputs['courses_bannar'])) {
-            $inputs['courses_bannar'] = uploadImage($inputs['courses_bannar'] , config('path.SETTING_PATH') , optional($setting->where('key','courses_bannar')->first())->value);
+        if (isset($inputs['mata_banner'])) {
+            $inputs['mata_banner'] = uploadImage($inputs['mata_banner'] , config('path.SETTING_PATH') , optional($setting->where('key','mata_banner')->first())->value);
         }
         $this->model->setMany($inputs);
         toast(__('lang.updated') , 'success');

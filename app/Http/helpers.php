@@ -8,6 +8,7 @@
  * @return full path of uploaded
  */
 
+use App\Models\Setting;
 use Modules\Superadmin\Util\ActivityLogUtil;
 
 if (!function_exists('uploadImage')) {
@@ -146,5 +147,14 @@ if (!function_exists('setLogs')) {
     {
         return ActivityLogUtil::logs($name, $description, $subject, $properties);
         // return $activityLog->logs($name, $description, $subject, $properties);
+    }
+}
+
+
+if (!function_exists('getSettingValue')) {
+    function getSettingValue($key)
+    {
+      return  Setting::getValue($key);
+
     }
 }

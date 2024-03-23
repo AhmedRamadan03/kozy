@@ -11,7 +11,7 @@ class ToDo extends Model
 
     protected $table = "to_dos";
 
-    protected $fillable = ['user_id','created_by','subject','task','end_date','status'];
+    protected $fillable = ['user_id','created_by','subject','task','end_date','status','notes'];
 
     public const STATUS = [
         'pending',

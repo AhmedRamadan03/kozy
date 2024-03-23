@@ -18,12 +18,15 @@ class PermissionSeeder extends Seeder
 
         $this->permissions = [
             ['name' => $perfix . 'read-dashboard','display_name' => 'Read Dashboard','description' => 'عرض لوحة التحكم','path' => 'dashboard'],
+            ['name' => $perfix . 'read-activity_logs','display_name' => 'Read Activity Logs','description' => 'عرض  تقرير سجل النشاط','path' => 'dashboard'],
 
              //setting
             ['name' => $perfix . 'read-settings','display_name' => 'Read Setting','description' => 'عرض  الاعدادات','path' => 'settings'],
+            ['name' => $perfix . 'update-settings','display_name' => 'Update Setting','description' => 'تعديل  الاعدادات','path' => 'settings'],
 
             //about us
             ['name' => $perfix . 'read-about-us','display_name' => 'Read About Us','description' => 'عرض من نحن','path' => 'about_us'],
+            ['name' => $perfix . 'update-about-us','display_name' => 'Update About Us','description' => 'تعديل من نحن','path' => 'about_us'],
 
             //admins
             ['name' => $perfix . 'read-admins','display_name' => 'Read Admins','description' => 'عرض المسؤلين','path' => 'admins'],
@@ -36,7 +39,7 @@ class PermissionSeeder extends Seeder
             ['name' => $perfix . 'create-countries','display_name' => 'Create Country','description' => 'اضافة دولة','path' => 'countries'],
             ['name' => $perfix . 'update-countries','display_name' => 'Update Country','description' => 'تعديل دولة','path' => 'countries'],
             ['name' => $perfix . 'delete-countries','display_name' => 'Delete Country','description' => 'حذف دولة','path' => 'countries'],
-            ['name' => $perfix . 'filter-countries','display_name' => 'Filter Country','description' => 'فلتر دولة','path' => 'countries'],
+            // ['name' => $perfix . 'filter-countries','display_name' => 'Filter Country','description' => 'فلتر دولة','path' => 'countries'],
 
             //cities
             ['name' => $perfix . 'read-cities','display_name' => 'Read city','description' => 'عرض  مدينة','path' => 'cities'],
@@ -80,6 +83,7 @@ class PermissionSeeder extends Seeder
 
 
             //products
+            ['name' => $perfix . 'read-products_report','display_name' => 'Read Products Report','description' => 'عرض  تقرير المنتجات','path' => 'products'],
             ['name' => $perfix . 'read-products','display_name' => 'Read Products','description' => 'عرض المنتجات','path' => 'products'],
             ['name' => $perfix . 'create-products','display_name' => 'Create Products','description' => 'اضافة المنتجات','path' => 'products'],
             ['name' => $perfix . 'update-products','display_name' => 'Update Products','description' => 'تعديل المنتجات','path' => 'products'],
@@ -109,6 +113,25 @@ class PermissionSeeder extends Seeder
             ['name' => $perfix . 'create-features','display_name' => 'Create Features','description' => 'اضافة المميزات','path' => 'features'],
             ['name' => $perfix . 'update-features','display_name' => 'Update Features','description' => 'تعديل المميزات','path' => 'features'],
             ['name' => $perfix . 'delete-features','display_name' => 'Delete Features','description' => 'حذف المميزات','path' => 'features'],
+
+            //todos
+            ['name' => $perfix . 'read-todos','display_name' => 'Read Todos','description' => 'عرض التسكات','path' => 'todos'],
+            ['name' => $perfix . 'create-todos','display_name' => 'Create Todos','description' => 'اضافة التسكات','path' => 'todos'],
+            ['name' => $perfix . 'update-todos','display_name' => 'Update Todos','description' => 'تعديل التسكات','path' => 'todos'],
+            ['name' => $perfix . 'delete-todos','display_name' => 'Delete Todos','description' => 'حذف التسكات','path' => 'todos'],
+
+            //offers
+            ['name' => $perfix . 'read-offers','display_name' => 'Read Offer','description' => 'عرض العروض','path' => 'offers'],
+            ['name' => $perfix . 'create-offers','display_name' => 'Create Offer','description' => 'اضافة العروض','path' => 'offers'],
+            ['name' => $perfix . 'update-offers','display_name' => 'Update Offer','description' => 'تعديل العروض','path' => 'offers'],
+            ['name' => $perfix . 'delete-offers','display_name' => 'Delete Offer','description' => 'حذف العروض','path' => 'offers'],
+
+            //orders
+            ['name' => $perfix . 'read-orders','display_name' => 'Read Orders','description' => 'عرض الطلبات','path' => 'orders'],
+            ['name' => $perfix . 'export-orders','display_name' => 'Export Orders','description' => 'تصدير الطلبات','path' => 'orders'],
+            ['name' => $perfix . 'read-orders_report','display_name' => 'Read Orders Report','description' => 'عرض تقرير الطلبات','path' => 'orders'],
+            ['name' => $perfix . 'update-orders','display_name' => 'Update Orders','description' => 'تعديل الطلبات','path' => 'orders'],
+            ['name' => $perfix . 'delete-orders','display_name' => 'Delete Orders','description' => 'حذف الطلبات','path' => 'orders'],
 
 
 

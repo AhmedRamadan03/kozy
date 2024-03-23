@@ -45,6 +45,14 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-md-12 pt-2">
+                        <div class="item border-dash w3-round-large p-3">
+                            <b>{{ __('lang.notes') }} :  </b>
+                            <div>
+                                {!! $resource->notes  !!}
+                            </div>
+                        </div>
+                    </div>
 
 
 
