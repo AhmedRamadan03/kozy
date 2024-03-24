@@ -12,7 +12,7 @@
         <br><br>
     <div class="container">
         <div class="col-md-12">
-            <div class="d-flex justify-content-{{ isRtl()?'end':'start' }}">
+            <div class="d-flex ">
                 <b class="display-5 text-dark border--title p{{ isRtl() ? 'e' : 's' }}-2"
                     style="border-{{ isRtl() ? 'right' : 'left' }}: 10px solid #ED3436">
                     {{ __('front.categories') }}</b>

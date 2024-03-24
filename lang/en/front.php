@@ -155,4 +155,5 @@ return [
     'see_all_products' => 'See All Products',
     'cancel_order' => 'Cancel Order',
     'cancled_order' => 'Will Cancel Order',
+    'products' => 'Products',
 ];
