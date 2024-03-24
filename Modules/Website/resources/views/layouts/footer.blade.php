@@ -86,7 +86,7 @@
             <div class="row">
                 <div class=" col-md-6">
                     {{ date('Y') }} © {{ __('front.copyright') }}
-                    <a href="https://www.facebook.com/profile.php?id=100014484707215" class="main-color">Ahmed Ramadan</a>
+                    <a  class="main-color">{{ getSettingValue('site_name_' . App::getLocale()) }}</a>
                 </div>
                 <div class=" col-md-6">
                     <div class="links d-flex justify-content-center gap-3">
