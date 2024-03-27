@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<div class="panner d-flex" style="background-image: url({{ asset(getSettingValue('mata_banner')) }})">
+{{-- <div class="panner d-flex" style="background-image: url({{ asset(getSettingValue('mata_banner')) }})">
     <div class="container d-flex">
             <div class="text d-flex align-items-center">
                 <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
@@ -19,14 +19,14 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     <div class="pt-5 container mb-5">
         <div class="row">
             <div class="col-md-3" >
                 <div class="--categories p-3" style="height: 100%">
-                    <h4 class="border--main main-color bold p-2">{{ __('front.product_categories') }}</h4>
+                    <h4 class="border--main text-dark bold p-2">{{ __('front.product_categories') }}</h4>
 
                     <div class="pt-2">
                         @foreach ($categories as $cat)
@@ -56,7 +56,7 @@
                     </div>
 
                     <br><br>
-                    <h4 class="border--main main-color bold p-2">{{ __('lang.brands') }}</h4>
+                    <h4 class="border--main text-dark bold p-2">{{ __('lang.brands') }}</h4>
                     <div>
                       @foreach ($brands as $item)
                       <input type="checkbox" {{ request()->brand == $item->slug ? 'checked' : '' }} class="w3-check" id="brand-{{ $item->id }}"
@@ -67,7 +67,7 @@
                       @endforeach
                     </div>
                     <br><br>
-                    <h4 class="border--main main-color bold p-2">{{ __('front.availability') }}</h4>
+                    <h4 class="border--main text-dark bold p-2">{{ __('front.availability') }}</h4>
                     <div>
                         <input type="checkbox" {{ request()->in_stock ? 'checked' : '' }} class="w3-check" id="in_stock"
                             onclick="window.location.href='{{ route('front.categories') }}?in_stock=true'">
@@ -80,7 +80,7 @@
                         <label class="text-dark" for="onsale">{{ __('front.on_sale') }}</label>
                     </div>
                     <br><br>
-                    <h4 class="border--main main-color bold p-2">{{ __('front.filter_by_price') }}</h4>
+                    <h4 class="border--main text-dark bold p-2">{{ __('front.filter_by_price') }}</h4>
                     <div>
                        <form action="{{ route('front.categories') }}" method="GET">
                         @csrf

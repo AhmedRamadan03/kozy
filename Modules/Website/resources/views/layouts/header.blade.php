@@ -5,7 +5,7 @@
             $cart_count = App\Models\Cart::where('user_id',auth()->user()->id)->where('country_id',session('country')->id)->sum('quantity');
         @endphp
     @endauth
-  <div class="container-fluid bg-white  text-dark py-2 px-0 d-none d-lg-block">
+  <div class="container-fluid bg-white shadow text-dark py-2 px-0 d-none d-lg-block">
       <div class="container">
           <div class="d-flex justify-content-between align-items-center">
               <div class="item d-flex gap-3">
@@ -137,16 +137,20 @@
 
 
   <!-- Navbar Start -->
-  <div class="bg--nav">
-      <div class="container">
-          <nav class="navbar navbar-expand-lg  sticky-top " style="box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04);">
+  <div class="  mt-3 container">
+      <div class="" style="    background-color: #F1F4F8;
+      position: relative;
+      z-index: 99;
+      border-radius: 10px;
+      padding: 0 10px;">
+          <nav class="navbar navbar-expand-lg  sticky-top " >
               {{-- <div class="d-flex gap-2 justify-content-between align-items-center"> --}}
               <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
                   data-bs-target="#navbarCollapse">
                   <span class="navbar-toggler-icon"></span>
               </button>
               <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
-                  <h1 class="m-0"><img class="img-fluid me-3" style="width: 155px;height: 50" height="74"
+                  <h1 class="m-0"><img class="img-fluid me-3" style="width: 155px;height: 50px" height="74"
                           src="{{ asset(getSettingValue('logo')) }}" alt=""></h1>
               </a>
 

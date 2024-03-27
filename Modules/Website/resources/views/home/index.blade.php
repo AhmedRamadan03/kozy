@@ -13,8 +13,8 @@
     <div class="container">
         <div class="col-md-12">
             <div class="d-flex ">
-                <b class="display-5 text-dark border--title p{{ isRtl() ? 'e' : 's' }}-2"
-                    style="border-{{ isRtl() ? 'right' : 'left' }}: 10px solid #ED3436">
+                <b class="display-5 text-white  p-2"
+                    style="background: #A51912;border-radius: 10px">
                     {{ __('front.categories') }}</b>
             </div>
         </div>
@@ -37,8 +37,7 @@
 
         </div>
     </div>
-    <br><br>
-    @include('website::home.categories', ['categories' => $categories])
+
     <br><br>
     <div class="container pt-3 mb-5">
         <div class="row">
@@ -80,6 +79,9 @@
             @endforeach
         </div>
     </div>
+    <br><br>
+    @include('website::home.categories', ['categories' => $categories])
+
 
     <br><br>
     @include('website::home.offers', ['offers' => $offers])

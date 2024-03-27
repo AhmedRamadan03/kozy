@@ -2,8 +2,8 @@
     <div class="row mb-5">
         <div class="col-md-12">
             <div class="d-flex ">
-                <b class="display-5 text-dark border--title p{{ isRtl() ? 'e' : 's' }}-2"
-                    style="border-{{ isRtl() ? 'right' : 'left' }}: 10px solid #ED3436">
+                <b class=" text-dark border--title p{{ isRtl() ? 'e' : 's' }}-2"
+                   >
                     {{ __('front.products') }}</b>
             </div>
         </div>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="col-md-12 text-center pt-5">
-            <a href="{{ route('front.categories') }}" class="main-color btn btn--custom" id="see_more">
+            <a href="{{ route('front.categories') }}" class="main-color btn btn--custom" style="color:#000 !important;background: #E8CFCE !important" id="see_more">
                 <b class="fs-3">
 
                     {{ __('front.see_all_products') }}

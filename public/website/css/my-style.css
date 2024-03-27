@@ -39,14 +39,14 @@ body,html{
     transition: .5s;
 }
 .navbar .navbar-nav .nav-link{
-    color: #000  !important;
+    color: #403F3F  !important;
     font-size: 16px !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
 }
 .navbar .navbar-nav .nav-link.active{
     background-color: transparent !important;
-    border-bottom: 2px  solid var(--primary);
-    color: var(--primary) !important;
+    border-bottom: 2px  solid #000;
+    color:#000 !important;
     font-weight: 600 !important;
 }
 
@@ -88,9 +88,9 @@ color: #14090A;
 
 .btn--custom
 {
-    background-color: var(--primary);
+    background-color:#A51912;
     color: #fff !important;
-    border-radius: 50px ;
+    border-radius: 10px ;
     padding: 10px 30px;
     font-weight: 600;
 }
@@ -154,6 +154,11 @@ color: #14090A;
     background-position: center;
     background-size: contain;
 }
+.border--title{
+    font-weight: 700;
+    font-size: 80px;
+    Line-height:118.8px
+}
 ul#demo li{
     background-color: #fff;
     text-align: center;
@@ -161,7 +166,7 @@ ul#demo li{
     border-radius: 4px;
     font-size: larger;
     font-weight: 500;
-    color: var(--primary);
+    color: #000;
 }
 .ltr .btn--app{
     background-color: #310001;
@@ -239,7 +244,7 @@ div.copyright div div div.links a:hover svg path{
     border-radius: 8px;
 }
 .--categories{
-    background-color: #FDEBEB;
+    background-color: #F2E7E6;
     border-radius: 8px ;
 }
 .hidden{
