@@ -2,14 +2,9 @@
     --primary : #dcc861;
     --secondary : #F9C0C1
 }
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap'); */
 
-/* @import url('https://fonts.googleapis.com/css2?family=Tajawal&display=swap'); */
-body,h1,h2,h3,h4,h5,h6,p,a,span,div,* {
-    /* font-family: 'Tajawal', sans-serif; */
-    font-family: "Nunito Sans", sans-serif;
-    font-weight: 600 !important;
-}
+
 
 body,html{
     overflow-x: hidden !important;
@@ -254,6 +249,10 @@ div.copyright div div div.links a:hover svg path{
     accent-color: var(--primary);
 }
 
+.cart--count{
+    background-color: #dfff84 ;
+    color: #000;
+}
 
 .filter-price {
     width: 220px;

@@ -23,7 +23,7 @@ return [
     'new' => 'جديد',
     'sar' => 'ريال',
     'all_categories' => 'كل الأقسام',
-    'deal_of_this_week' => 'عروض هذا الاسبوع',
+    'deal_of_this_week' => 'أستمتع بالخصم',
     'deal_of_this_week_desc' =>'أطلق العنان للتوفيرات المذهلة مع صفقة الأسبوع لدينا',
     'days' => 'يوم',
     'hours' => 'ساعة',

@@ -47,7 +47,7 @@
 
     <div class="product--content">
         <h6><b>{{ $item->title }}</b></h6>
-        <p>{{ Str::limit($item->short_description, 60, '...') }}</p>
+        {{-- <p>{{ Str::limit($item->short_description, 60, '...') }}</p> --}}
         <div class="colors">
             @if (isset($item->variations))
                 @foreach ($item->variations()->groupBy('color_id')->select('color_id')->get() as $attr)

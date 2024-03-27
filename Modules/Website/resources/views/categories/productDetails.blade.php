@@ -22,7 +22,7 @@
 @endsection
 
 @section('content')
-<div class="panner d-flex" style="background-image: url({{ asset(getSettingValue('mata_banner')) }})">
+{{-- <div class="panner d-flex" style="background-image: url({{ asset(getSettingValue('mata_banner')) }})">
     <div class="container d-flex">
             <div class="text d-flex align-items-center">
                 <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
@@ -35,7 +35,7 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="container pt-5 mb-5">
         <div class="row pt-4">
@@ -200,14 +200,14 @@
                         {{-- @if ($checkPlaceStore) --}}
                         @if ($product->quantity > 0 && auth()->user())
                             <button
-                                class="btn btn-style w3-block btn--custom add-to-cart btn-addtocart"id="submitBtnAddCart"
-                                type="submit">
-                                {{ __('front.add_to_cart') }}
+                                class="btn btn-style w3-block  add-to-cart btn-addtocart"id="submitBtnAddCart"
+                                type="submit" style="background: #DCC861">
+                        <b>                                {{ __('front.add_to_cart') }}</b>
                                 <span data-feather="shopping-cart">
                             </button>
                         @elseif (!auth()->user())
-                            <a href="{{ route('login') }}" class="btn px-5 btn--custom add-to-cart btn-style w3-block ">
-                                {{ __('front.add_to_cart') }}
+                            <a href="{{ route('login') }}" class="btn px-5  add-to-cart btn-style  text-dark w3-block " style="background: #DCC861">
+                                <b>                                {{ __('front.add_to_cart') }}</b>
                                 <span data-feather="shopping-cart">
 
                             </a>

@@ -9,7 +9,14 @@
        {{-- Laravel Vite - CSS File --}}
        {{-- {{ module_vite('build-website', 'Resources/assets/sass/app.scss') }} --}}
         @include('website::layouts.css')
-
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+body,h1,h2,h3,h4,h5,h6,p,a,span,div,* {
+    font-family: "Cairo", sans-serif;
+    /* font-family: "Nunito Sans", sans-serif; */
+    font-weight: 600 !important;
+}
+</style>
     </head>
     <body class="{{ App::getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
         @include('website::layouts.header')
